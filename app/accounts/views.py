@@ -7,4 +7,5 @@ from accounts.forms import LoginForm
 
 class LoginView(TemplateView):
     template_name = "login.html"
+    form = LoginForm
 
