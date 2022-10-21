@@ -14,3 +14,14 @@ class LoginView(TemplateView):
         context = {'form': form}
         return self.render_to_response(context)
 
+    def post(self, request, *args, **kwargs):
+        form = self.form(request.POST)
+        if not form.is_valid():
+            return redirect('index')
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(request, username=username, password=password)
+        if not user:
+            return redirect('login')
+        login(request, user)
+        return redirect('index')
