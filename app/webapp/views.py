@@ -7,6 +7,8 @@ from webapp.forms import *
 from webapp.models import *
 from django.views.generic import View, ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class IndexView(ListView):
     template_name = "index.html"
@@ -55,7 +57,7 @@ class TaskView(TemplateView):
         return context
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     template_name = "add.html"
     model = Task
     form_class = TaskForm
@@ -64,7 +66,7 @@ class TaskCreate(CreateView):
         return reverse('index')
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
     template_name = "edit.html"
     model = Task
     form_class = TaskForm
@@ -73,7 +75,7 @@ class TaskUpdate(UpdateView):
         return reverse('task_view', kwargs={'pk': self.object.pk})
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin, DeleteView):
     template_name = "delete.html"
     model = Task
     success_url = reverse_lazy('index')

@@ -25,3 +25,8 @@ class LoginView(TemplateView):
             return redirect('login')
         login(request, user)
         return redirect('index')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
