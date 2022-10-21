@@ -362,3 +362,7 @@ i {
 .header_body .login_btn {
     font-size: 20px;
 }
+
+.delete_btn {
+    margin: 0px 8px;
+}

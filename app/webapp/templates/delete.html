@@ -11,8 +11,8 @@
     <div class="delete_btn">
         <form action="{% url 'delete' task.pk %}" method="POST">
             {% csrf_token %}
-            <a class="btn red" href="{% url 'index' %}">Нет</a>
-            <input class="btn green" type="submit" value="Да">
+            <a class="btn red delete_btn" href="{% url 'index' %}">Нет</a>
+            <input class="btn green delete_btn" type="submit" value="Да">
         </form>
     </div>
 </div>
