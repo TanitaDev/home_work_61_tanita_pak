@@ -9,3 +9,8 @@ class LoginView(TemplateView):
     template_name = "login.html"
     form = LoginForm
 
+    def get(self, request, *args, **kwargs):
+        form = self.form()
+        context = {'form': form}
+        return self.render_to_response(context)
+
