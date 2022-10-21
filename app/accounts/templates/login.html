@@ -2,9 +2,6 @@
 {% load static %}
 {% load bootstrap5 %}
 {% block header_block %}
-<div class="form_block">
-    {% include 'partial/search.html' %}
-</div>
 {% endblock %}
 {% block title %}Задачи{% endblock %}
 {% block todo_block %}
@@ -13,9 +10,24 @@
         <h2 class="task_title">Вход</h2>
     </div>
 </div>
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% bootstrap_button button_type='submit' content='Войти' %}
-</form>
+<div class="todo_body">
+    <form class="todo_form" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+
+        {% if has_error %}
+        <p class="form-error">Неверное имя пользователя или пароль.</p>
+        {% endif %}
+        <p>
+            <label class="form_label" for="username" class="form-label">Имя пользователя:
+                <input class="input" type="text" name="username" id="username">
+            </label>
+        </p>
+        <p>
+            <label class="form_label" for="password" class="form-label">Пароль:
+                <input class="input" type="password" name="password" id="password"></label>
+
+            <button class="btn green" type="submit">Войти</button>
+        </p>
+    </form>
+</div>
 {% endblock %}

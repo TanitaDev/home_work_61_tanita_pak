@@ -20,11 +20,14 @@
                 <p>{{ user.name }}</p>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
-                    <input type="submit" value="Выход">
+                    <a>
+                        <i class="fa-solid fa-right-from-bracket"></i> <input class="logout_btn" type="submit"
+                                                                              value="Выход">
+                    </a>
                 </form>
             </li>
             {% else %}
-            <li><a href="{% url 'login' %}">Вход</a></li>
+            <li><a class="login_btn" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Вход</a></li>
             {% endif %}
         </ul>
         {% block header_block %}

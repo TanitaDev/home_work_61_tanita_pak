@@ -57,7 +57,7 @@ class TaskView(TemplateView):
         return context
 
 
-class TaskCreate(LoginRequiredMixin, CreateView):
+class TaskCreate(CreateView):
     template_name = "add.html"
     model = Task
     form_class = TaskForm
